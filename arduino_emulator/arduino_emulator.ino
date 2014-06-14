@@ -1,3 +1,4 @@
+  const byte NUMBER_OF_PATTERNS = 6;
   int led = 13;  // LED mount on Arduino board
   bool startCondition = false; // Was start conditon meet?
 
@@ -25,6 +26,9 @@ void loop() {
   
   // Start condition was meet we can send the values
   byte timeToWait = random(5,30);  //Calculate time to wait before next value between 5-30[s]
+  
+  char* patterns[NUMBER_OF_PATTERNS]={"0,0,1,1,1,1","0,1,1,1,1,1","0,0,1,0,1,1","1,0,1,1,1,0","1,1,1,1,1,1","0,0,0,0,0,0"};
+  byte rPattern = random(NUMBER_OF_PATTERNS);
 
   /*  
   You should really forget about code you see here. It's gross, but acording to this 
@@ -44,13 +48,19 @@ void loop() {
   float rValue6 = (float)random(1800,2000)/100;  int rrValue6 = (rValue6 - (int)rValue6) * 100;
   float rValue7 = (float)random(1900,2000)/100;  int rrValue7 = (rValue7 - (int)rValue7) * 100;
   float rValue8 = (float)random(1900,1950)/100;  int rrValue8 = (rValue8 - (int)rValue8) * 100;
-  float rValue9 = (float)random(1850,1950)/100; int rrValue9 = (rValue9 - (int)rValue9) * 100;
-  float rValue10 = (float)random(1850,1950)/100;int rrValue10 = (rValue10 - (int)rValue10) * 100;
-
-  p("%2d.%d,%2d.%d,%2d.%d,%2d.%d,%2d.%d,%2d.%d,%2d.%d,%2d.%d,%2d.%d\n\r",
+  float rValue9 = (float)random(1850,1950)/100;  int rrValue9 = (rValue9 - (int)rValue9) * 100;
+  float rValue10 = (float)random(1850,1950)/100; int rrValue10 = (rValue10 - (int)rValue10) * 100;
+  float rValue11 = (float)random(700,800)/100;   int rrValue11 = (rValue11 - (int)rValue11) * 100;
+  float rValue12 = (float)random(750,850)/100;   int rrValue12 = (rValue12 - (int)rValue12) * 100;
+  float rValue13 = (float)random(400,650)/100;   int rrValue13 = (rValue13 - (int)rValue13) * 100;
+  float rValue14 = (float)random(200,300)/100;   int rrValue14 = (rValue14 - (int)rValue14) * 100;
+  
+  p("%2d.%d,%2d.%d,%2d.%d,%2d.%d,%2d.%d,%2d.%d,%2d.%d,%2d.%d,%2d.%d,%s,%2d.%d,%2d.%d,%2d.%d,%2d.%d\n\r",
     (int)rValue1,rrValue1,(int)rValue2,rrValue2,(int)rValue3,rrValue3,
     (int)rValue4,rrValue4,(int)rValue5,rrValue5,(int)rValue6,rrValue6,
-    (int)rValue7,rrValue7,(int)rValue8,rrValue8,(int)rValue9,rrValue9);
+    (int)rValue7,rrValue7,(int)rValue8,rrValue8,(int)rValue9,rrValue9,
+    patterns[rPattern],(int)rValue11,rrValue11,(int)rValue12,rrValue12,
+    (int)rValue13,rrValue13,(int)rValue14,rrValue14);
   
   // put your main code here, to run repeatedly:
   digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
