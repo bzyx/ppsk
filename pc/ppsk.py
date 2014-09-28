@@ -157,7 +157,8 @@ class WebHandler(object):
         :param number: subject number
         :return: subject name or None
         """
-        if number > self.max_subjects:
+
+        if number > int(self.max_subjects):
             return None
         return self.subjects[str(number)]
 
@@ -176,8 +177,8 @@ class WebHandler(object):
 
         try:
             r = requests.get(self.base_url + self.URL_PATH.format(subject, data_, self.auth_token))
-            logger.warning("WEB REQUEST CODE: {0}".format(r.status_code))
-            logger.warning("WEB REQUEST ANSWER: {0}".format(r.text))
+            logger.debug("WEB REQUEST CODE: {0}".format(r.status_code))
+            logger.debug("WEB REQUEST ANSWER: {0}".format(r.text))
             logger.debug(r.url)
             logger.debug(r.json())
 
@@ -223,7 +224,6 @@ def read_from_port_loop(serial_port_handler, data_handler):
 if __name__ == "__main__":
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)       # DEFAULT LOG LEVEL
-    #logger.setLevel(logging.WARNING)   # I WANT TO SEE MOAR
     #logger.setLevel(logging.DEBUG)     # WALLL OF TEXT (WELCOME TO MATRIX)
 
     #create console handler and set level to debug
